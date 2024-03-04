@@ -5,6 +5,9 @@
 " Disable compatibility with vi which can cause unexpected issues.
 set nocompatible
 
+" Enable delete, backspace, and arrow keys in insert mode.
+set backspace=indent,eol,start
+
 " Enable type file detection. Vim will be able to try to detect the type of file in use.
 filetype on
 
@@ -92,24 +95,19 @@ call plug#begin('~/.vim/plugged')
 " Base Plugins
 Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdtree'
-Plug 'chrisbra/colorizer'
 Plug 'pantharshit00/vim-prisma'
-Plug 'tc50cal/vim-terminal'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'jparise/vim-graphql'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'godlygeek/tabular'
 Plug 'preservim/vim-markdown'
-
-" post install (yarn install | npm install) then load plugin only for editing supported files
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'npm install --frozen-lockfile --production',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
+Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
 
 Plug 'github/copilot.vim'
-" Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -120,16 +118,6 @@ call plug#end()
 " disable folding by default
 let g:vim_markdown_folding_disabled = 1
 
-" Linting Config
-"let g:ale_fixers = {
-" \ 'javascript': ['eslint']
-" \ }
-
-"let g:ale_sign_error = '❌'
-"let g:ale_sign_warning = '⚠️'
-
-"let g:ale_fix_on_save = 1
-
 " NERDTree Config
 
 let NERDTreeShowHidden=1
@@ -137,12 +125,6 @@ let NERDTreeIgnore=['\.pyc$', '\~$', '\.swp$']
 
 let g:NERDTreeDirArrowExpandable = '+'
 let g:NERDTreeDirArrowCollapsible = '-'
-
-" Tagbar Config
-
-nnoremap <silent> <F8> :TagbarToggle<CR>
-
-:set completeopt=preview
 
 " }}}
 
@@ -153,7 +135,7 @@ let g:coc_global_extensions = ['coc-tsserver']
 " }}}
 
 " MAPPINGS --------------------------------------------------------------- {{{
-
+:
 " Remap keys for applying codeAction to the current line.
 nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
@@ -167,6 +149,9 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> <C-f> :NERDTreeFocus<CR>
 nnoremap <silent> <C-t> :NERDTreeToggle<CR>
 nnoremap <silent> <C-n> :NERDTree<CR>
+
+" Prettier format
+nmap <leader>pf :Prettier<CR>
 
 " }}}
 
@@ -187,4 +172,4 @@ augroup END
 
 " Status bar code goes here.
 
-" }}}
+" }}}::
