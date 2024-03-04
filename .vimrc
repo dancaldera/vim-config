@@ -106,6 +106,7 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --producti
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
+Plug 'dyng/ctrlsf.vim'
 
 Plug 'github/copilot.vim'
 
@@ -125,6 +126,11 @@ let NERDTreeIgnore=['\.pyc$', '\~$', '\.swp$']
 
 let g:NERDTreeDirArrowExpandable = '+'
 let g:NERDTreeDirArrowCollapsible = '-'
+
+" brew install ack
+
+" Use the ack tool as the backend
+let g:ctrlsf_backend = 'ack'
 
 " }}}
 
@@ -152,6 +158,23 @@ nnoremap <silent> <C-n> :NERDTree<CR>
 
 " Prettier format
 nmap <leader>pf :Prettier<CR>
+
+" CtrlSF search
+
+" (Ctrl+F) Open search prompt (Normal Mode)
+nmap <C-F>f <Plug>CtrlSFPrompt 
+" (Ctrl-F + f) Open search prompt with selection (Visual Mode)
+xmap <C-F>f <Plug>CtrlSFVwordPath
+" (Ctrl-F + F) Perform search with selection (Visual Mode)
+xmap <C-F>F <Plug>CtrlSFVwordExec
+" (Ctrl-F + n) Open search prompt with current word (Normal Mode)
+nmap <C-F>n <Plug>CtrlSFCwordPath
+" (Ctrl-F + o )Open CtrlSF window (Normal Mode)
+nnoremap <C-F>o :CtrlSFOpen<CR>
+" (Ctrl-F + t) Toggle CtrlSF window (Normal Mode)
+nnoremap <C-F>t :CtrlSFToggle<CR>
+" (Ctrl-F + t) Toggle CtrlSF window (Insert Mode)
+inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
 
 " }}}
 
