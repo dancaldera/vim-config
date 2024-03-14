@@ -1,19 +1,11 @@
 # vim-config
 
-This project enables the possibility to use the same vim configuration on different machines.
-
-## Prerequisites
-
-1. Install bun: 1.0.30 or later
-2. Install vim: 7.4 or later
-3. Install git: 1.7.10 or later
-
 ## Installation
 
 - Clone the repository to your home directory:
 
 ```bash
-git clone <repository-url> ~/.vim
+git clone https://github.com/dancaldera/vim-config.git ~/.vim
 ```
 
 - Create a symbolic link to the vimrc file:
